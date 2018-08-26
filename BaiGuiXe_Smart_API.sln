@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaiGuiXe_Smart_API", "BaiGuiXe_Smart_API\BaiGuiXe_Smart_API.csproj", "{B6FE77C2-97EB-46D7-9C2B-579798543880}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6FE77C2-97EB-46D7-9C2B-579798543880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6FE77C2-97EB-46D7-9C2B-579798543880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6FE77C2-97EB-46D7-9C2B-579798543880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6FE77C2-97EB-46D7-9C2B-579798543880}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54A08224-9B80-4CEA-89FE-1843CE27F921}
+	EndGlobalSection
+EndGlobal

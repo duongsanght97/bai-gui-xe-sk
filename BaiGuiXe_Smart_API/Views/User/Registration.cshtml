@@ -1,0 +1,153 @@
+﻿@model BaiGuiXe_Smart_API.Models.User
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+      <div class="container">
+
+
+
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="section-title ">
+                      <h2>ĐĂNG KÝ THÀNH VIÊN </h2>
+                      <img src="~/Content/asset/img/section-shape.png" alt="section-shape">
+                      <p>Đăng ký một lần sử dụng mãi mãi , an toàn , tiện dụng và hoàn toàn miễn phí</p>
+                  </div>
+              </div>
+          </div>
+
+          @using (Html.BeginForm("Registration","User"))
+          {
+               @Html.AntiForgeryToken() 
+          <form id="digita-contact-form" onsubmit="return checkpass()">
+              <div class="row">
+                  <div class="col-md-6">
+                      @Html.ValidationSummary(true, "", new { @class = "ui-state-error" }) <br />
+                      <div class="row">
+                          
+                         <div class="col-md-12">
+                              <h4>Email</h4>
+                              <div class="form-group">
+                                  <input type="email" class="form-control" id="mail_txt" name="txtemail" required >
+                              </div>
+                          </div>
+
+                          <div class="col-md-12">
+                              <h4>Mật khẩu</h4>
+                              <div class="form-group">
+                                  <input type="password" class="form-control" id="matkhau" name="txtmatkhau" required>
+                              </div>
+                          </div>
+
+                          <div class="col-md-12">
+                              <h4>Nhập lại mật khẩu</h4>
+                              <div class="form-group">
+                                  <input type="password" class="form-control" id="nhaplaimatkhau" name="txtnhaplaimatkhau" required>
+                              </div>
+                          </div>
+
+                          <div class="col-md-12">
+                              <h4>Họ & Tên đệm</h4>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="Hotendem" name="txthotendem" required>
+                              </div>
+                          </div>
+
+                          <div class="col-md-12">
+                              <h4>Giới tính</h4>
+                              <div class="form-group">
+                                  <select id="gioitinh" name="txtgioitinh">
+                                      <option value="1">Nam</option>
+                                      <option value="0">Nữ</option>
+                                  </select>
+
+                              </div>
+                          </div>
+
+                      </div>
+
+                  </div>
+                  <div class="col-md-6">
+                      <div class="col-md-12">
+                          <h4>Tên</h4>
+                          <div class="form-group">
+                              <input type="text" class="form-control" id="Ten" name="txtten" required>
+                          </div>
+                      </div>
+
+                      <div class="col-md-12">
+                          <h4>Địa chỉ</h4>
+                          <div class="form-group">
+                              <input type="text" class="form-control" id="diachi" name="txtdiachi" required>
+                          </div>
+                      </div>
+
+                      <div class="col-md-12">
+                          <h4>Điện thoại</h4>
+                          <div class="form-group">
+                              <input type="text" class="form-control" id="dienthoai" name="txtdienthoai" required>
+                          </div>
+                      </div>
+
+                      <div class="col-md-12">
+                          <h4>Ngày sinh</h4>
+                          <div class="form-group">
+                              <input type="date" class="form-control" id="ngaysinh" name="txtngaysinh" required>
+                          </div>
+                      </div>
+
+                      <div class="col-md-12">
+
+                          <div class="form-group">
+                              <input type="checkbox" onclick="Checkclick()" id="txtdieukhoan" name="txtdieukhoan" value="0"> Tôi chấp nhận <a href="@Url.Action("DieuKhoan","Home")">điều khoản</a> của công ty .<br>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            
+      
+              <center>
+                  <div class="form-group">
+                      
+                      <button id="btnsubmit" class="btn btn-blue" type="submit" style="display:none">Đăng Ký</button><br /><br />
+                      <div class="g-recaptcha" data-sitekey="6LeFd2kUAAAAAOM8fMja3Ti9SHgLyJWXk1ZesCg5"></div>
+
+                  </div>
+              </center>
+                
+          
+
+              <script>
+                  function Checkclick() {
+                      var checkBox = document.getElementById("txtdieukhoan");
+                      var text = document.getElementById("btnsubmit");
+                      if (checkBox.checked == true) {
+                          text.style.display = "block";
+                      } else {
+                          text.style.display = "none";
+                      }
+                  }
+
+                  function checkpass() {
+                      var p1 = document.getElementById("txtmatkhau");
+                      var p2 = document.getElementById("txtnhaplaimatkhau");
+                      if (p1.value == p2.value) {
+                          return true;
+                      }
+                      else {
+                          return false;
+                      }
+                  }
+              </script>
+
+
+          </form>
+          }
+
+
+
+      </div>

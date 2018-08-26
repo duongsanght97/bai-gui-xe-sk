@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "XacNhanEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+      <div class="container">
+          @{
+              var session = (BaiGuiXe_Smart_API.Models.UserSession.UserSession)Session["loginsession"];
+          }
+
+
+
+
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="section-title ">
+                      <h2>XÁC NHẬN EMAIL</h2>
+                      <img src="~/Content/asset/img/section-shape.png" alt="section-shape">
+                      <p>Để đảm bảo an toàn và tài khoản hợp lệ , chúng tôi đã gửi đường dẫn xác thực vào email của bạn . Hãy truy cập hòm thư và xác nhận nó ! </p>
+                  </div>
+              </div>
+          </div>
+          @if (session != null)
+          {
+              if (session.XacThucEmail == true)
+              {
+                  <center><h2>Email của tài khoản này đã được xác minh !</h2></center>
+              }
+
+              else
+              {
+                  <center><label class="welcome-content"> Xin chào <p style="color:red">@session.Email</p></label></center>
+                  <center>
+                      <button id="btn_xacminh" onclick="checkemail()" class="btn btn-blue" type="button">Xác Minh</button>
+                      <div class="result" style="color:red"></div>
+                  </center>
+              }
+          }
+          else
+          {
+
+              if (Model != null)
+              {
+                  <center><label class="welcome-content"> Xin chào <p style="color:red">@Model.Email</p></label></center>
+                  <center>
+                      <button id="btn_xacminh" onclick="checkemail()" class="btn btn-blue" type="button">Xác Minh</button>
+                      <div class="result" style="color:red"></div>
+                  </center>
+
+              }
+              else
+              {
+                  <center><h2>Mã xác minh không tồn tại !</h2></center>
+              }
+
+
+
+
+          }
+
+          <script type="text/javascript">
+              function Redirect() {
+                  window.location = "/";
+              }
+            function checkemail() {
+                $.ajax({
+                    type: "GET",
+                    url: "/Verification/xacnhan",
+                    data: { 'code': '@ViewBag.ObjectId' },
+
+                    success: function (result) {
+
+                        if (result == 1) {
+
+                            $('.result').html("Thành công ! Cảm ơn bạn");
+                            setTimeout('Redirect()', 5000);
+                        }
+                        if (result == -1) {
+
+                            $('.result').html("Thất bại! Key đã hết hạn sử dụng");
+
+                        }
+                        if (result == -2)
+                        {
+                            $('.result').html("Thất bại ! Không thể xác minh tài khoản");
+                        }
+
+                        if (result == 0) {
+                            $('.result').html("Thất bại ! Key không tồn tại.");
+                        }
+
+                    }
+                });
+            }
+          </script>
+
+      </div>
+
+

@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "XacNhanEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+      <div class="container">
+          @{ 
+              var session = (BaiGuiXe_Smart_API.Models.UserSession.UserSession)Session["loginsession"];
+          }
+
+
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="section-title ">
+                      <h2>XÁC NHẬN EMAIL</h2>
+                      <img src="~/Content/asset/img/section-shape.png" alt="section-shape">
+                      <p>Để đảm bảo an toàn và tài khoản hợp lệ , chúng tôi đã gửi đường dẫn xác thực vào email của bạn . Hãy truy cập hòm thư và xác nhận nó ! </p>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <label class="ui-state-error">Địa chỉ Email hiện tại : @session.Email</label><a id="editmail" href="#">Thay đổi</a>
+              <script type="text/javascript">
+                  function editemail() {
+                      var checkBox = document.getElementById("txtdieukhoan");
+                      var text = document.getElementById("digita-contact-form");
+                      if (checkBox.click == true) {
+                          text.style.display = "block";
+                      } else {
+                          text.style.display = "none";
+                      }
+                  }
+              </script>
+          </div>
+          @using (Html.BeginForm("XacNhanEmail", "User"))
+          {
+              @Html.AntiForgeryToken()
+              <form id="digita-contact-form" style="display:none" >
+                   <div class="row">
+                       <div class="col-md-6">
+                           @Html.ValidationSummary(true, "", new { @class = "ui-state-error" }) <br />
+                           <div class="row">
+
+                               <div class="col-md-12">
+                                   <h4>Email</h4>
+                                   <div class="form-group">
+                                       <input type="email" class="form-control" id="mail_txt" name="txtemail" required>
+                                   </div>
+                               </div>
+                               </div>
+                           </div>
+                       </div>
+              </form>
+          }
+
+          </div>

@@ -1,0 +1,36 @@
+﻿
+
+    @foreach (var i in Model)
+    {
+    <div class="single-slider-item">
+        <div class="container">
+            <div class="row slider-content-area">
+                <div class="col-md-7 col-sm-7 wow slideInLeft " data-wow-duration="2s" data-wow-delay="0.4s">
+                    <div class="slider-content">
+                        <h2>@i.TieuDe</h2>
+                        <p>@i.NoiDung</p>
+                        <div class="slider-links">
+                            @{ 
+                                int sum = 0;
+                                foreach (var j in ViewBag.list_model)
+                                {
+                                    if(j.Id_Slide == i.Id)
+                                    {
+                                        sum++;
+
+
+                                        <a class="pricing-btn blue-btn homepage-one-all-features-btn action-btn slider-links-@sum" href="@j.Link">@j.Ten</a>
+                                        }
+                                    }
+                                }
+                            @*<a class="pricing-btn blue-btn homepage-one-all-features-btn action-btn slider-links-2" href="#">THAM KHẢO GIÁ</a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="~/Content/asset/img/slide/@i.HinhAnh" alt="@i.TieuDe" class="position-img wow slideInRight " data-wow-duration="2s" data-wow-delay="0.4s">
+        </div>
+
+    </div>
+    }
+
